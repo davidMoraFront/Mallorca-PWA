@@ -1,0 +1,26 @@
+@import "../../../../../styles.scss";
+
+:host {
+  div {
+    width: 40px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 2px;
+
+    &[position="por"] {
+      background-color: $background-color-por;
+    }
+
+    &[position="def"] {
+      background-color: $background-color-def;
+    }
+
+    &[position="med"] {
+      background-color: $background-color-med;
+    }
+
+    &[position="del"] {
+      background-color: $background-color-del;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<p class="list-title">{{ listTitle | translate }}</p>
+<ng-container *ngIf="listTitle !== 'players'; else listPlayers">
+    <ng-container *ngFor="let player of players">
+        <app-player-card [player]="player"></app-player-card>
+    </ng-container>  
+</ng-container>
+<ng-template #listPlayers>
+    <ng-container *ngFor="let player of players">
+        <app-player-card-profile [player]="player"></app-player-card-profile>
+    </ng-container>
+</ng-template>

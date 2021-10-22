@@ -1,0 +1,32 @@
+@import "../../../../styles.scss";
+
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: $background-color-primary;
+
+  .modal-header,
+  .modal-body {
+    border-bottom: none;
+  }
+
+  .modal-footer {
+    border-top: none;
+    justify-content: space-between;
+  }
+
+  .close {
+    span {
+      font-size: 20px;
+    }
+  }
+
+  .btn-danger {
+    width: 92px;
+    border-radius: 20px;
+  }
+}

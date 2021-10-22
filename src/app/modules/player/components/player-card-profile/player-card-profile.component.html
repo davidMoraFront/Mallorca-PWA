@@ -1,0 +1,20 @@
+<div [routerLink]="['../', 'profile', player?.id]" routerLinkActive="active">
+    <div class="player-card-container">
+        <div class="player-card-container-info dir-row">
+            <div class="player-card-icon-position">
+                <app-player-icon [image]="player?.image" [position]="player?.position"></app-player-icon>
+                <app-player-position [position]="player?.position"></app-player-position>
+            </div>
+            <div class="player-card-info dir-column">
+                <div class="player-card-info-name dir-row">
+                    <p>{{player?.name}}</p>
+                </div>
+                <div class="buttons-container">
+                    <button type="button" class="btn btn-primary" (click)="$event.stopPropagation(); edit(player)">{{ 'Edit profile' | translate }}</button>
+                    <button type="button" class="btn btn-primary" (click)="$event.stopPropagation(); delete(player)">{{ 'Delete player' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

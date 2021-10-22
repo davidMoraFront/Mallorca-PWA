@@ -1,0 +1,206 @@
+@import "../../../../../styles.scss";
+
+:host {
+  .player-item-stadistic-container {
+    display: flex;
+    align-items: center;
+    margin: 3px;
+
+    &.dir-row {
+      justify-content: center;
+      margin: 40px 5px;
+
+      > * {
+        margin: 0 10px;
+      }
+
+      .player-item-stadistic-option {
+        margin-right: 30px;
+        margin-bottom: 0;
+        background-color: transparent;
+        height: 25px;
+        width: 25px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        border-radius: 0;
+
+        div {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      button {
+        padding: 6px 12px;
+        border-radius: 4px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 15px;
+        background-color: $background-color-button;
+        border-style: none;
+        border-radius: 50%;
+        box-sizing: border-box;
+
+        &.edit-cancel {
+          background-image: url("../../../../../assets/edit.png");
+
+          &.cancel {
+            background-image: url("../../../../../assets/cancel.png");
+          }
+        }
+
+        &.save {
+          background-image: url("../../../../../assets/saved.png");
+
+          &.save-value {
+            background-image: url("../../../../../assets/save.png");
+          }
+        }
+
+        &.subtract {
+          background-image: url("../../../../../assets/subtract.png");
+        }
+
+        &.sum {
+          background-image: url("../../../../../assets/plus.png");
+        }
+      }
+
+      span {
+        width: 40px;
+        text-align: center;
+      }
+
+      .input-icon-group {
+        width: 60px;
+        height: 28px;
+        display: flex;
+        margin: 0;
+
+        .icon-group {
+          display: flex;
+        }
+
+        input {
+          width: 100%;
+          padding: 5px 0px 5px 5px;
+          text-align: center;
+
+          &[disabled] {
+            background-color: inherit;
+            border-width: 0;
+          }
+
+          &:focus {
+            border-radius: 24px;
+            border-color: transparent;
+            text-align: center;
+            padding: 3px;
+          }
+        }
+      }
+
+      .player-item-stadistic-list-position {
+        margin-left: 30px;
+        padding: 5px;
+        width: 30px;
+      }
+    }
+
+    .player-item-stadistic-option {
+      height: 30px;
+      width: 30px;
+      background-color: $background-color-primary;
+      padding: 5px;
+      margin-bottom: 2px;
+      border-radius: 50%;
+
+      &.active {
+        background-color: $background-color-active;
+      }
+
+      div {
+        height: 20px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &[stadistic="total-matches"] {
+          background-image: url("../../../../../assets/total-matches.png");
+        }
+
+        &[stadistic="league-matches"] {
+          background-image: url("../../../../../assets/league-matches.png");
+        }
+
+        &[stadistic="friendly-matches"] {
+          background-image: url("../../../../../assets/friendly-matches.png");
+        }
+
+        &[stadistic="won-matches"] {
+          background-image: url("../../../../../assets/win.png");
+        }
+
+        &[stadistic="tied-matches"] {
+          background-image: url("../../../../../assets/equals.png");
+        }
+
+        &[stadistic="lost-matches"] {
+          background-image: url("../../../../../assets/loss.png");
+        }
+
+        &[stadistic="titular-player"] {
+          background-image: url("../../../../../assets/titular.png");
+        }
+
+        &[stadistic="substitute-player"] {
+          background-image: url("../../../../../assets/substitute.png");
+        }
+
+        &[stadistic="time"] {
+          background-image: url("../../../../../assets/time.png");
+        }
+
+        &[stadistic="goals"] {
+          background-image: url("../../../../../assets/goal.png");
+        }
+
+        &[stadistic="shot-penalty"] {
+          background-image: url("../../../../../assets/shot-penalty.png");
+        }
+
+        &[stadistic="goals-penalty"] {
+          background-image: url("../../../../../assets/goal-penalty.png");
+        }
+
+        &[stadistic="provoked-penalty"] {
+          background-image: url("../../../../../assets/penalty.png");
+        }
+
+        &[stadistic="penalties-saved"] {
+          background-image: url("../../../../../assets/penalty-saved.png");
+        }
+
+        &[stadistic="yellow-cards"] {
+          background-image: url("../../../../../assets/yellow-card.png");
+        }
+
+        &[stadistic="red-cards"] {
+          background-image: url("../../../../../assets/red-card.png");
+        }
+
+        &[stadistic="sanctions-matches"] {
+          background-image: url("../../../../../assets/sanction.png");
+        }
+
+        &[stadistic="assistance"] {
+          background-image: url("../../../../../assets/assistance.png");
+        }
+      }
+    }
+  }
+}

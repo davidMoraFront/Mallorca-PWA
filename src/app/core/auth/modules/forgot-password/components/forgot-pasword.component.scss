@@ -1,0 +1,33 @@
+@import "../../../../../../styles.scss";
+
+:host {
+  .forgot-password {
+    margin: 50px;
+
+    .shield {
+      height: 200px;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-image: url("../../../../../../assets/shield.png");
+    }
+
+    .card {
+      background-image: url("../../../../../../assets/card-image.png"),
+        linear-gradient(
+          135deg,
+          $background-gradient-init,
+          $background-gradient-finish
+        );
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: cover;
+      box-shadow: 0 6px 10px 0 rgb(19 26 43 / 35%);
+      margin-top: 50px;
+
+      button {
+        margin-top: 20px;
+      }
+    }
+  }
+}

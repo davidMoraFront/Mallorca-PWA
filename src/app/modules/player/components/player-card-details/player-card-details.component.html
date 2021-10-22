@@ -1,0 +1,29 @@
+<p class="list-title">{{player?.name}}</p>
+<div class="player-card-details">
+    <div class="player-card-details-container dir-column">
+        <div class="player-card-details-container-info dir-column">
+            <div class="player-card-details-info dir-column">
+                <div class="player-card-details-info-position dir-column">
+                    <app-player-position [position]="player?.position"></app-player-position>
+                </div>
+            </div>
+            <app-player-icon [image]="player?.image" [position]="player?.position"></app-player-icon>
+        </div>
+        <form role="form" [formGroup]="playerDetailsForm" (ngSubmit)="onSubmit()" *ngIf="playerDetailsForm">
+            <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index;">
+                <div class="player-card-details-stadistic dir-row" >
+                    <div [formGroupName]="i">
+                        <ng-container>
+                            <app-player-item-stadistic [detail]="true"
+                                [edit]="isEditable"
+                                [indexPosition]="positionsList[i]"
+                                [stadistic]="playerDetailsForm?.value.stadistics[i]"
+                                (valueChange)="playerDetailsForm?.value.stadistics[i].value = $event"></app-player-item-stadistic>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </form>
+    </div>
+</div>
+

@@ -1,1 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* variables */
+
+// background-color-error: #dc3545;
+
+$color-primary: #ffffff;
+$color-secondary: #000000;
+$color-link: #5599fd;
+
+$background-color-principal: #3d4762;
+$background-color-success: #28a745;
+$background-color-error: #ff0000;
+$background-color-icon: #ffffff;
+$background-color-button: #ed4138;
+$background-color-primary: #5d6783;
+$background-color-header: #434d68;
+$background-color-footer: #283149;
+$background-color-active: #ff5757;
+
+$background-color-por: #ff8000;
+$background-color-def: #00bb2d;
+$background-color-med: #0dcaf0;
+$background-color-del: #ff0000;
+
+$background-gradient-init: #5d6783;
+$background-gradient-finish: #434d68;
+
+$border-color-error: #ff0000;
+
+$box-shadow-header: #333d57;
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  color: $color-primary !important;
+  background-color: $background-color-principal !important;
+
+  .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+  }
+
+  h1 {
+    color: $color-primary;
+  }
+
+  .dir-column {
+    flex-direction: column;
+  }
+
+  .dir-row {
+    flex-direction: row;
+  }
+
+  input {
+    outline: none;
+
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[disabled] {
+      color: $color-primary;
+    }
+  }
+
+  .buttons-container {
+    .btn,
+    .btn-primary {
+      color: $color-primary;
+      border-color: transparent;
+
+      &:focus,
+      &:active,
+      &:active:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  a {
+    color: $color-link;
+  }
+
+  p {
+    color: $color-primary;
+  }
+
+  span {
+    color: $color-primary;
+  }
+
+  .modal-dialog {
+    .modal-content {
+      background-color: transparent;
+      border: 0;
+    }
+  }
+
+  [required]:after {
+    content: "*";
+  }
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

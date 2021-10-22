@@ -1,0 +1,60 @@
+@import "../../../../styles.scss";
+
+:host {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    background-color: $background-color-header;
+    box-shadow: 0 3px 5px $box-shadow-header;
+    box-sizing: border-box;
+    z-index: 1;
+
+    .back {
+      color: $color-primary;
+      border-style: none;
+      background: transparent;
+      padding: 1px 6px;
+
+      &:before {
+        content: "<";
+        font-size: 24px;
+      }
+    }
+
+    .shield-header {
+      display: flex;
+      flex-direction: row;
+
+      .shield {
+        background-image: url("../../../../assets/shield.png");
+        height: 30px;
+        width: 30px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        border-radius: 50%;
+      }
+
+      p {
+        margin: 3px 0 0 3px;
+      }
+    }
+
+    .logout {
+      background-image: url("../../../../assets/logout.png");
+      height: 20px;
+      width: 20px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      margin: 0 6px;
+    }
+  }
+}

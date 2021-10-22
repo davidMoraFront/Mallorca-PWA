@@ -1,0 +1,13 @@
+<div class="forgot-password">
+    <div class="shield"></div>
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">{{ 'Restore password' | translate }}</h5>
+            <p class="card-text">{{ 'Please enter your email' | translate }}</p>
+            <form role="form" [formGroup]="forgotPasswordForm" (ngSubmit)="onResetPassword()">
+                <input type="email" placeholder="{{ 'email' | translate }}" autocomplete="on" formControlName="email" />
+                <button type="submit" class="btn btn-primary">{{ 'Restore password' | translate }}</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="player-item-stadistic-container dir-row" *ngIf="detail else info">
+    <div class="player-item-stadistic-option">
+        <div [attr.stadistic]="stadistic.name"></div>
+    </div>
+    <ng-container *ngIf="this.stadistic.name !== 'time'; else time">
+        <button class="subtract" (click)="subtraction()" *ngIf="roleUser === 'admin' || 'editor' && edit"></button>
+        <span>{{stadistic.value}}</span>
+        <button class="sum" (click)="sum()" *ngIf="roleUser === 'admin' || 'editor' && edit"></button>
+    </ng-container>
+    
+    <ng-template #time>
+        <button class="edit-cancel" [ngClass]="cancel ? 'cancel' : ''" (click)="editInput($event)" *ngIf="roleUser === 'admin' || 'editor' && edit"></button>
+        <div class="input-icon-group">
+            <input type="number" id="time" disabled [value]="stadistic.value" (blur)="onBlurEvent($event)" />
+        </div>
+        <button class="save" [ngClass]="save ? 'save-value' : ''" (click)="saveInput()" *ngIf="roleUser === 'admin' || 'editor' && edit"></button>
+    </ng-template>
+
+    <div class="player-item-stadistic-list-position">
+        <span>{{ indexPosition || 0 }}º</span>
+    </div>
+</div>
+
+<ng-template #info>
+    <div class="player-item-stadistic-container dir-column" >
+        <div class="player-item-stadistic-option" [ngClass]="stadisticName === stadistic.name ? 'active' : ''">
+            <div [attr.stadistic]="stadistic.name"></div>
+        </div>
+        <span>{{stadistic.value}}</span>
+    </div>
+</ng-template>

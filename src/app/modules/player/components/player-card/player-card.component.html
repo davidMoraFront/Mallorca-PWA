@@ -1,0 +1,19 @@
+<div [routerLink]="['../', 'players', player.id]" routerLinkActive="active">
+    <div class="player-card-container">
+        <div class="player-card-container-info dir-row">
+            <div class="player-card-icon-position">
+                <app-player-icon [image]="player?.image" [position]="player?.position"></app-player-icon>
+                <app-player-position [position]="player?.position"></app-player-position>
+            </div>
+            <div class="player-card-info dir-column">
+                <div class="player-card-info-name dir-row">
+                    <p>{{player?.name}}</p>
+                </div>
+                <div class="player-item-stadistic-all dir-row">
+                    <app-player-item-stadistic [stadistic]="stadistic" *ngFor="let stadistic of player.stadistics"></app-player-item-stadistic>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

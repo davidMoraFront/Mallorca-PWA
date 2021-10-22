@@ -1,0 +1,78 @@
+@import "../../../../../styles.scss";
+
+:host {
+  .list-title {
+    margin: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .player-card-details {
+    margin: 0 5px 5px 5px;
+    padding-top: 5px;
+
+    .player-card-details-container {
+      display: flex;
+      padding: 5px;
+      border-radius: 5px;
+      flex: 1;
+      background-image: url("../../../../../assets/card-image.png"),
+        linear-gradient(
+          135deg,
+          $background-gradient-init,
+          $background-gradient-finish
+        );
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: cover;
+      box-shadow: 0 6px 10px 0 rgb(19 26 43 / 35%);
+
+      .player-card-details-container-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 2;
+        margin-top: 25px;
+
+        > * {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+        }
+
+        .player-card-details-info {
+          margin: 5px;
+
+          .player-card-details-info-position {
+            display: flex;
+            align-items: center;
+
+            p {
+              margin: 5px;
+              font-size: 24px;
+            }
+          }
+
+          .player-card-details-stadistic {
+            flex-wrap: wrap;
+          }
+        }
+      }
+
+      .buttons-container {
+        display: flex;
+        justify-content: center;
+        margin: 40px 10px;
+
+        button {
+          background-color: $background-color-button;
+          padding: 10px;
+          border-radius: 20px;
+          min-width: 220px;
+          cursor: pointer;
+          border: 0;
+        }
+      }
+    }
+  }
+}

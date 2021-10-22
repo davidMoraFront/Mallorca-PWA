@@ -1,0 +1,40 @@
+<div class="footer">
+    <div class="footer-option" [routerLink]="['/players/total-matches']" routerLinkActive="active">
+        <div class="total-matches-list"></div>
+    </div>
+    <div class="footer-option" [routerLink]="['/players/time']" routerLinkActive="active"> 
+        <div class="time-list"></div>
+    </div>
+    <div class="footer-option" [routerLink]="['/players']" routerLinkActive="active">
+        <div class="lists"></div>
+    </div>
+    <div class="footer-option" [routerLink]="['/players/goals']" routerLinkActive="active">
+        <div class="goals-list"></div>
+    </div>
+    <div class="footer-option" data-bs-toggle="modal" data-bs-target="#modalHelp">
+        <div class="help"></div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalHelp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">{{ 'Información de iconos' | translate }}</h4>
+            <button type="button" class="close" aria-label="Close" data-bs-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ng-container *ngFor="let stadistic of arrayStadistics">
+              <div class="stadistic-container">
+                <div class="stadistic-icon">
+                  <div class="{{stadistic}}"></div>
+                </div>
+                <p class="stadistic-name">{{stadistic | translate}}</p>
+              </div>
+            </ng-container>
+          </div>
+      </div>
+    </div>
+  </div>

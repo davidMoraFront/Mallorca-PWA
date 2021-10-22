@@ -1,0 +1,35 @@
+<p class="lists-title">{{ 'Lists' | translate}}</p>
+<div class="list-container">
+    <div class="list-container-options">
+        <div class="list-container-option-group" *ngIf="roleUser === 'admin' || 'editor'">
+            <div class="list-container-option" [routerLink]="['players']" routerLinkActive="active">
+                <div class="list-container-option-icon">
+                    <div class="list-players"></div>
+                </div>
+                <span>{{ 'Players' | translate}}</span>
+            </div>
+            <div class="list-container-option" [routerLink]="['players', 'create']" routerLinkActive="active">
+                <div class="list-container-option-icon">
+                    <div class="add-player"></div>
+                </div>
+                <span>{{ 'Add player' | translate}}</span>
+            </div>
+        </div>
+        <ng-container *ngFor="let nameList of nameLists; let i = index; even as isEven">
+            <div class="list-container-option-group" *ngIf="isEven">
+                <div class="list-container-option" [routerLink]="[nameLists[i]]" routerLinkActive="active">
+                    <div class="list-container-option-icon">
+                        <div class="{{nameLists[i]}}"></div>
+                    </div>
+                    <span>{{nameLists[i] | translate}}</span>
+                </div>
+                <div class="list-container-option" [routerLink]="[nameLists[i + 1]]" routerLinkActive="active">
+                    <div class="list-container-option-icon">
+                        <div class="{{nameLists[i + 1]}}"></div>
+                    </div>
+                    <span>{{nameLists[i + 1] | translate}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

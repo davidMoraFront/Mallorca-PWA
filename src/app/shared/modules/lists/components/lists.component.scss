@@ -1,0 +1,169 @@
+@import "../../../../../styles.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .lists-title {
+    margin: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .list-container {
+    display: flex;
+
+    .list-container-options {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 5px;
+      background-image: url("../../../../../assets/card-image.png"),
+        linear-gradient(
+          135deg,
+          $background-gradient-init,
+          $background-gradient-finish
+        );
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: cover;
+      box-shadow: 0 6px 10px 0 rgb(19 26 43 / 35%);
+
+      .list-container-option-group {
+        display: flex;
+        justify-content: space-around;
+        padding: 25px 10px;
+
+        .list-container-option {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 140px;
+          border: 1px solid #283149;
+          border-radius: 50%;
+          padding: 15px;
+          height: 140px;
+          justify-content: center;
+
+          .list-container-option-icon {
+            height: 50px;
+            width: 50px;
+            background-color: #5d6783;
+            padding: 5px;
+            border-radius: 50%;
+
+            div {
+              height: 30px;
+              margin: 5px;
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+
+              &.total-matches {
+                background-image: url("../../../../../assets/total-matches.png");
+              }
+
+              &.league-matches {
+                background-image: url("../../../../../assets/league-matches.png");
+              }
+
+              &.friendly-matches {
+                background-image: url("../../../../../assets/friendly-matches.png");
+              }
+
+              &.won-matches {
+                background-image: url("../../../../../assets/win.png");
+              }
+
+              &.tied-matches {
+                background-image: url("../../../../../assets/equals.png");
+              }
+
+              &.lost-matches {
+                background-image: url("../../../../../assets/loss.png");
+              }
+
+              &.titular-player {
+                background-image: url("../../../../../assets/titular.png");
+              }
+
+              &.substitute-player {
+                background-image: url("../../../../../assets/substitute.png");
+              }
+
+              &.time {
+                background-image: url("../../../../../assets/time.png");
+              }
+
+              &.goals {
+                background-image: url("../../../../../assets/goal.png");
+              }
+
+              &.shot-penalty {
+                background-image: url("../../../../../assets/shot-penalty.png");
+              }
+
+              &.goals-penalty {
+                background-image: url("../../../../../assets/goal-penalty.png");
+              }
+
+              &.provoked-penalty {
+                background-image: url("../../../../../assets/penalty.png");
+              }
+
+              &.penalties-saved {
+                background-image: url("../../../../../assets/penalty-saved.png");
+              }
+
+              &.yellow-cards {
+                background-image: url("../../../../../assets/yellow-card.png");
+              }
+
+              &.red-cards {
+                background-image: url("../../../../../assets/red-card.png");
+              }
+
+              &.sanctions-matches {
+                background-image: url("../../../../../assets/sanction.png");
+              }
+
+              &.assistance {
+                background-image: url("../../../../../assets/assistance.png");
+              }
+
+              &.list-players {
+                background-image: url("../../../../../assets/players.png");
+              }
+
+              &.add-player {
+                background-image: url("../../../../../assets/add-player.png");
+              }
+            }
+          }
+
+          span {
+            font-size: 11px;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 10px 10px 10px;
+
+    button {
+      background-color: $background-color-button;
+      padding: 10px;
+      border-radius: 20px;
+      min-width: 220px;
+      cursor: pointer;
+      border: 0;
+    }
+  }
+}

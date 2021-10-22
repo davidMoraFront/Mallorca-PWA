@@ -1,0 +1,33 @@
+@import "../../../../../styles.scss";
+
+:host {
+  div {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &[position="por"] {
+      background-color: $background-color-por;
+    }
+
+    &[position="def"] {
+      background-color: $background-color-def;
+    }
+
+    &[position="med"] {
+      background-color: $background-color-med;
+    }
+
+    &[position="del"] {
+      background-color: $background-color-del;
+    }
+
+    &.image-default {
+      background-image: url("../../../../../assets/player.png");
+    }
+  }
+}
