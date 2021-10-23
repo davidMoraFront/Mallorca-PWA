@@ -3,7 +3,7 @@
     <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">{{ 'Thanks for signing up!' | translate }}</h5>
-            <p class="card-text">{{ 'We have sent a confirmation email' | translate: {email: user?.email} }}</p>
+            <p class="card-text" >{{ 'We have sent a confirmation email' | translate: {email: user?.email} }}</p>
             <p class="card-text">{{ 'Please check your email and click the link to finish the registration' | translate }}</p>
             <div class="buttons-container">
                 <button class="btn btn-primary" (click)="onSendEmail()">{{ 'Resend verification email' | translate }}</button>

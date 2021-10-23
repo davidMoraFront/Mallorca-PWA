@@ -1,7 +1,7 @@
 <p class="lists-title">{{ 'Lists' | translate}}</p>
 <div class="list-container">
     <div class="list-container-options">
-        <div class="list-container-option-group" *ngIf="roleUser === 'admin' || 'editor'">
+        <div class="list-container-option-group" *ngIf="roleUser === 'admin' || roleUser === 'editor'">
             <div class="list-container-option" [routerLink]="['players']" routerLinkActive="active">
                 <div class="list-container-option-icon">
                     <div class="list-players"></div>

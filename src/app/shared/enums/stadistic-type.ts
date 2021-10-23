@@ -7,14 +7,14 @@ export enum StadisticType {
     LostMatches = 'lost-matches',
     TitularPlayer = 'titular-player',
     SubstitutePlayer = 'substitute-player',
-    Time = 'time',
     Goals = 'goals',
+    Assistance = 'assistance',
+    Time = 'time',
+    SanctionsMatches = 'sanctions-matches',
+    YellowCards = 'yellow-cards',
+    RedCards = 'red-cards',
     ThrownPenalty = 'shot-penalty',
     GoalsPenalty = 'goals-penalty',
     ProvokedPenalty = 'provoked-penalty',
-    PenaltiesSaved = 'penalties-saved',
-    YellowCards = 'yellow-cards',
-    RedCards = 'red-cards',
-    SanctionsMatches = 'sanctions-matches',
-    Assistance = 'assistance'
+    PenaltiesSaved = 'penalties-saved'
 }

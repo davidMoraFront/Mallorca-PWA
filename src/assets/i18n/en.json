@@ -15,7 +15,7 @@
     "Restore password": "Restore password",
     "Please enter your email": "Please enter your email",
     "Thanks for signing up!": "Thanks for signing up!",
-    "We have sent a confirmation email": "We have sent a confirmation email to <strong>{{ user?.email }}</strong>",
+    "We have sent a confirmation email": "We have sent a confirmation email to {{ email }}",
     "Please check your email and click the link to finish the registration": "Please check your email and click the link to finish the registration",
     "Resend verification email": "Resend verification email",
     "Access": "Access",

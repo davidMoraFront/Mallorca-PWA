@@ -12,11 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class LayoutComponent implements OnInit {
   isLoading$ = this.spinnerService.isLoading$;
 
-  constructor(private spinnerService: SpinnerService, public translate: TranslateService) {
-    translate.addLangs(['en', 'es']);
-    translate.setDefaultLang('es');
-    translate.use('es');
-   }
+  constructor(private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
   }

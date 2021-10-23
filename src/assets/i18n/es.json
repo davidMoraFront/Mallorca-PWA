@@ -15,7 +15,7 @@
     "Restore password": "Restablecer contraseña",
     "Please enter your email": "Por favor introduzca su correo electrónico",
     "Thanks for signing up!": "¡Gracias por registrarte!",
-    "We have sent a confirmation email": "Hemos enviado un email de confirmación a <strong>{{ user?.email }}</strong>",
+    "We have sent a confirmation email": "Hemos enviado un email de confirmación a {{ email }}",
     "Please check your email and click the link to finish the registration": "Por favor revise su correo electrónico y haga clic en el enlace para finalizar el registro",
     "Resend verification email": "Reenviar email de verificación",
     "Access": "Acceder",

@@ -25,10 +25,16 @@
       box-shadow: 0 6px 10px 0 rgb(19 26 43 / 35%);
       margin-top: 50px;
 
-      button {
-        margin-top: 20px;
-        background-color: $background-color-button;
-        width: 242px;
+      .buttons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+          margin-top: 20px;
+          background-color: $background-color-button;
+          width: 242px;
+        }
       }
     }
   }

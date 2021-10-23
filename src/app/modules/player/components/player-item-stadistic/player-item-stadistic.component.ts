@@ -28,9 +28,8 @@ export class PlayerItemStadisticComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.stadisticName = this.router.url.split('/').slice(2).join();
+      this.stadisticName = this.router.url.split('/').slice(1).join();
     });
-    // this.edit = this.el.nativeElement.hasAttribute("edit");
     if (this.stadistic.name === 'time') {
       this.previousValue = this.stadistic.value;
     }
@@ -39,12 +38,10 @@ export class PlayerItemStadisticComponent implements OnInit {
 
   sum() {
     this.stadistic.value++;
-    // this.valueChange.emit(this.stadistic.value++);
   }
 
   subtraction() {
     this.stadistic.value--;
-    // this.valueChange.emit(this.stadistic.value++);
   }
 
   onBlurEvent(event: any) {

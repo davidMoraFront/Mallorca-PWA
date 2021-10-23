@@ -62,12 +62,14 @@ export class AuthService extends RoleValidator {
 
   async googleLoginRegister(): Promise<any> {
     try {
-      const { user } = await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-      this.updateUserData(user);
+      let user = {};
+      await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(credential => {
+        user = credential.user;
+        if (credential.additionalUserInfo.isNewUser) this.updateUserData(credential.user);
+      });
       return user;
     } catch(error) {
       console.log(error);
-      
     }
   }
 
