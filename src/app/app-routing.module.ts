@@ -1,6 +1,4 @@
-import { ForgotPaswordComponent } from './core/auth/modules/forgot-password/components/forgot-pasword.component';
 import { EmailVerificationComponent } from './core/auth/components/email-verification/email-verification.component';
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

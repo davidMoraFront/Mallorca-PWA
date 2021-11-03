@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../../../../core/auth/services/auth.service';
+import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Role } from 'src/app/core/auth/enums/role';
 import { StadisticType } from 'src/app/shared/enums/stadistic-type';
 
@@ -7,15 +9,20 @@ import { StadisticType } from 'src/app/shared/enums/stadistic-type';
   templateUrl: './lists.component.html',
   styleUrls: ['./lists.component.scss']
 })
-export class ListsComponent implements OnInit {
+export class ListsComponent implements OnInit, OnDestroy {
   nameLists: string[] = [];
   roleUser: string = Role.SUSCRIPTOR;
+  sub: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.nameLists = Object.keys(StadisticType).map(key => StadisticType[key]);
-    this.roleUser = localStorage.getItem('role');
+    this.sub = this.authService.user$.subscribe(user => this.roleUser = user.role);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

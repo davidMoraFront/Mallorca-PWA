@@ -43,7 +43,6 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
     this.subs.push(this.activatedRoute.params.subscribe(params => {
       this.isEditable = this.router.url.split('/').slice(1, 2).join() === 'profile';
     }));
-    this.subs.push(this.authService.user$.subscribe(user => this.role = user.role));
     this.subs.push(this.activatedRoute.params.subscribe(params => this.id = params.id));
     this.subs.push(this.playerService.getPlayer(this.id).subscribe(res => {
       this.player = res;
