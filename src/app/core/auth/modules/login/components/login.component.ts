@@ -2,6 +2,7 @@ import { AuthService } from '../../../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { of, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   isError$: Observable<boolean> = of(false);
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
     try {
       const user = await this.authService.googleLoginRegister();
       this.authService.checkUserIsVerified(user);
+      this.router.navigate(['/list']);
     } catch(error) {
       console.log(error);
     }
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
       const user = await this.authService.login(email, password);
       user === undefined ? this.isError$ = this.authService.isError$ : '';
       this.authService.checkUserIsVerified(user);
+      this.router.navigate(['/list']);
     } catch (error) {
       console.log(error);
     }

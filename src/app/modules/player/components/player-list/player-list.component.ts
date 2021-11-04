@@ -24,7 +24,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      let list = this.router.url.split('/').slice(1).join();
+      let list = this.router.url.split('/').slice(2).join();
       this.listTitle = list;
     });
 

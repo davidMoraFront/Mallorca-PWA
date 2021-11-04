@@ -26,9 +26,7 @@ export class RegisterComponent implements OnInit {
     const { email, password } = this.registerForm.value;
     try {
       const user = await this.authService.register(email, password);
-      console.log(user);
       this.authService.checkUserIsVerified(user);
-      
     } catch(error) {
       console.log(error);
     }
@@ -38,6 +36,7 @@ export class RegisterComponent implements OnInit {
     try {
       const user = await this.authService.googleLoginRegister();
       this.authService.checkUserIsVerified(user);
+      this.router.navigate(['/list']);
     } catch(error) {
       console.log(error);
     }
