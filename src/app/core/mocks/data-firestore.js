@@ -4,9 +4,9 @@ require("firebase/firestore");
 
 // Initialize Cloud Firestore through Firebase
 firebase.initializeApp({
-  apiKey: "AIzaSyDW7yCs0rgplHR_9-ztclTHXNYy4dWKNKM",
-  authDomain: "players-abb28.firebaseapp.com",
-  projectId: "players-abb28",
+  apiKey: "AIzaSyCR9rXfugxSfb9Pvtj1MoEkJCr8J5xjRJ8",
+  authDomain: "mallorca-pwa.firebaseapp.com",
+  projectId: "mallorca-pwa",
 });
 
 var db = firebase.firestore();
@@ -14,8 +14,9 @@ var db = firebase.firestore();
 var playerCollection = [
   {
     id: "neq2IUNtnFjFLHHBwdbd",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/ja.png?alt=media&token=2f638245-2e36-4cf8-9cb0-aee0855abc23",
+    // image:
+    //   "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/ja.png?alt=media&token=2f638245-2e36-4cf8-9cb0-aee0855abc23",
+    image: "",
     name: "jose",
     position: "por",
     stadistics: [
@@ -41,8 +42,9 @@ var playerCollection = [
   },
   {
     id: "At7gM0Dhi6rDg3pjHH3Z",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/dm.png?alt=media&token=0bba843c-6dd7-4cfa-aed4-af8aa4959719",
+    // image:
+    //   "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/dm.png?alt=media&token=0bba843c-6dd7-4cfa-aed4-af8aa4959719",
+    image: "",
     name: "david",
     position: "del",
     stadistics: [
@@ -68,8 +70,9 @@ var playerCollection = [
   },
   {
     id: "VwRBEyRvk5hXBuYVGqTt",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/ag.png?alt=media&token=506faf15-2692-4044-9212-6551b9400c4b",
+    // image:
+    //   "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/ag.png?alt=media&token=506faf15-2692-4044-9212-6551b9400c4b",
+    image: "",
     name: "alex",
     position: "def",
     stadistics: [
@@ -95,8 +98,9 @@ var playerCollection = [
   },
   {
     id: "cxgR9qJoLbJJjZxzrKOq",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/am.png?alt=media&token=e83b4792-5869-4cd2-a2e2-7e891701c28f",
+    // image:
+    //   "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/am.png?alt=media&token=e83b4792-5869-4cd2-a2e2-7e891701c28f",
+    image: "",
     name: "aaron",
     position: "med",
     stadistics: [

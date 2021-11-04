@@ -19,7 +19,6 @@ export class PlayerItemStadisticComponent implements OnInit {
   cancel: boolean = false;
   save: boolean = false;
   previousValue: number;
-  index: number = 0;
   players: Player[] = [];
   stadisticName: string = '';
   roleUser: string = Role.SUSCRIPTOR;
