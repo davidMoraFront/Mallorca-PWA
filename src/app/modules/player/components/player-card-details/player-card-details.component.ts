@@ -1,5 +1,3 @@
-import { AuthService } from 'src/app/core/auth/services/auth.service';
-import { ToastService } from './../../../../shared/modules/toast/services/toast.service';
 import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, FormArray, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -9,10 +7,8 @@ import { Stadistic } from "src/app/shared/interfaces/stadistic";
 import { SpinnerService } from "src/app/shared/modules/spinner/services/spinner.service";
 import { PlayerService } from "../../services/player.service";
 import { Order } from 'src/app/shared/enums/order';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { Role } from 'src/app/core/auth/enums/role';
-import { TranslateService } from '@ngx-translate/core';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -36,15 +32,14 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
     private activatedRoute: ActivatedRoute,
     private playerService: PlayerService,
     private fb: FormBuilder,
-    private spinnerService: SpinnerService,
-    private authService: AuthService) {}
+    private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
     this.subs.push(this.activatedRoute.params.subscribe(params => {
       this.isEditable = this.router.url.split('/').slice(1, 2).join() === 'profile';
     }));
     this.subs.push(this.activatedRoute.params.subscribe(params => this.id = params.id));
-    this.subs.push(this.playerService.getPlayer(this.id).subscribe(res => {
+    this.subs.push(this.playerService.getPlayer(this.id).pipe(take(1)).subscribe(res => {
       this.player = res;
       this.dataStadistics = res.stadistics;
       this.reset();
@@ -117,6 +112,10 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
 
   compare(a: Stadistic, b: Stadistic, order: string): number {
     return order === Order.ASC ? a.value - b.value : b.value - a.value;
+  }
+
+  getIndex(index: number): number {
+    return index;
   }
 
 }

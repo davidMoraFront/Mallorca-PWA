@@ -10,7 +10,7 @@
             <app-player-icon [image]="player?.image" [position]="player?.position"></app-player-icon>
         </div>
         <form role="form" [formGroup]="playerDetailsForm" (ngSubmit)="onSubmit()" *ngIf="playerDetailsForm">
-            <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index;">
+            <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index; trackBy: getIndex">
                 <div class="player-card-details-stadistic dir-row" >
                     <div [formGroupName]="i">
                         <ng-container>
