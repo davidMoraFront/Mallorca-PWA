@@ -8,7 +8,6 @@ import { SpinnerService } from "src/app/shared/modules/spinner/services/spinner.
 import { PlayerService } from "../../services/player.service";
 import { Order } from 'src/app/shared/enums/order';
 import { Role } from 'src/app/core/auth/enums/role';
-import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -24,6 +23,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   dataStadistics: Stadistic[];
   subs: Subscription[] = [];
   players: Player[] = [];
+  playersSort: Player[] = [];
   positionsList: number[] = [];
   role: Role = Role.SUSCRIPTOR;
   isEditable: boolean = false;
@@ -39,14 +39,15 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
       this.isEditable = this.router.url.split('/').slice(1, 2).join() === 'profile';
     }));
     this.subs.push(this.activatedRoute.params.subscribe(params => this.id = params.id));
-    this.subs.push(this.playerService.getPlayer(this.id).pipe(take(1)).subscribe(res => {
+    this.subs.push(this.playerService.getPlayers().subscribe(res => this.players = res));
+    this.subs.push(this.playerService.getPlayer(this.id).subscribe(res => {
       this.player = res;
       this.dataStadistics = res.stadistics;
       this.reset();
       this.fillForm(this.player);
       this.spinnerService.hide();
       this.positionsList.length = 0;
-      this.dataStadistics.map(stad => this.positionListPlayer(stad.name));
+      this.dataStadistics.map(stad => this.positions(stad.name));
     }));
   }
 
@@ -101,13 +102,10 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
     this.playerService.updatePlayer(this.id, this.playerDetailsForm.value);
   }
 
-  positionListPlayer(stadisticName: string): number[] {
-    this.subs.push(this.playerService.getPlayers().subscribe(stadOpt => {
-      this.players = stadOpt.sort((a, b) => this.compare(a.stadistics.find(el => el.name === stadisticName ? el : '')!,
-        b.stadistics.find(el => el.name === stadisticName ? el : '')!, Order.DES));
-        this.positionsList.push(this.players.findIndex(player => player.id === this.player.id) + 1);
-    }));
-    return this.positionsList;
+  positions(stadisticName: string) {
+    this.playersSort = this.players.sort((a, b) => this.compare(a.stadistics.find(el => el.name === stadisticName ? el : '')!,
+          b.stadistics.find(el => el.name === stadisticName ? el : '')!, Order.DES));
+    this.positionsList.push(this.playersSort.findIndex(player => player.id === this.player.id) + 1);
   }
 
   compare(a: Stadistic, b: Stadistic, order: string): number {
