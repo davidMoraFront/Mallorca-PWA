@@ -44,11 +44,8 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
       this.player = res;
       this.dataStadistics = res.stadistics;
       this.reset();
-      
-      this.spinnerService.hide();
-      this.positionsList.length = 0;
-      this.dataStadistics.map(stad => this.positions(stad.name));
       this.fillForm(this.player);
+      this.spinnerService.hide();
     }));
   }
 
@@ -64,7 +61,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
     return this.fb.group({
       name: this.fb.control(el.name),
       value: this.fb.control(el.value),
-      position: this.fb.control(this.positionsList[index])
+      position: this.fb.control(this.positions(el.name))
     });
   }
 
@@ -107,9 +104,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   positions(stadisticName: string) {
     this.playersSort = this.players.sort((a, b) => this.compare(a.stadistics.find(el => el.name === stadisticName ? el : '')!,
           b.stadistics.find(el => el.name === stadisticName ? el : '')!, Order.DES));
-    this.positionsList.push(this.playersSort.findIndex(player => player.id === this.player.id) + 1);
-    console.log(this.positionsList);
-    
+    return this.playersSort.findIndex(player => player.id === this.player.id) + 1;
   }
 
   compare(a: Stadistic, b: Stadistic, order: string): number {
