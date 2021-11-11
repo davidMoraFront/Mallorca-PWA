@@ -23,7 +23,6 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   subs: Subscription[] = [];
   players: Player[] = [];
   playersSort: Player[] = [];
-  positionsList: number[] = [];
   roleUser: string = '';
   isEditable: boolean = false;
 
@@ -60,8 +59,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   addStadistic(el: Stadistic, index: number): FormGroup {
     return this.fb.group({
       name: this.fb.control(el.name),
-      value: this.fb.control(el.value),
-      position: this.fb.control(this.positions(el.name))
+      value: this.fb.control(el.value)
     });
   }
 
@@ -99,20 +97,6 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
 
   onSubmit() {
     this.playerService.updatePlayer(this.id, this.playerDetailsForm.value);
-  }
-
-  positions(stadisticName: string) {
-    this.playersSort = this.players.sort((a, b) => this.compare(a.stadistics.find(el => el.name === stadisticName ? el : '')!,
-          b.stadistics.find(el => el.name === stadisticName ? el : '')!, Order.DES));
-    return this.playersSort.findIndex(player => player.id === this.player.id) + 1;
-  }
-
-  compare(a: Stadistic, b: Stadistic, order: string): number {
-    return order === Order.ASC ? a.value - b.value : b.value - a.value;
-  }
-
-  getIndex(index: number): number {
-    return index;
   }
 
 }

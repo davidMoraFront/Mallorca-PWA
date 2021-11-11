@@ -102,7 +102,7 @@ var playerCollection = [
     //   "https://firebasestorage.googleapis.com/v0/b/players-abb28.appspot.com/o/am.png?alt=media&token=e83b4792-5869-4cd2-a2e2-7e891701c28f",
     image: "",
     name: "aaron",
-    position: "med",
+    position: "cen",
     stadistics: [
       { name: "total-matches", value: 3 },
       { name: "league-matches", value: 2 },

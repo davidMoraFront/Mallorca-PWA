@@ -10,7 +10,7 @@
             </div>
         </div>
         <form role="form" [formGroup]="playerDetailsForm" (ngSubmit)="onSubmit()" *ngIf="playerDetailsForm">
-            <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index; trackBy: getIndex; even as isEven">
+            <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index; even as isEven">
                 <ng-container *ngIf="roleUser === 'admin' || 'editor'; else noEditable">
                     <div [formGroupName]="i">
                         <ng-container>

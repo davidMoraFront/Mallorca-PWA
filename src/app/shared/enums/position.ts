@@ -1,6 +1,6 @@
 export enum Position {
     POR = 'por',
     DEF = 'def',
-    MED = 'med',
+    CEN = 'cen',
     DEL = 'del'
 }
