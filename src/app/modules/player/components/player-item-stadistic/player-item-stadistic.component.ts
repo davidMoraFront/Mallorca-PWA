@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, ElementRef, EventEmitter } from "@ang
 import { Stadistic } from "src/app/shared/interfaces/stadistic";
 import { Player } from 'src/app/shared/interfaces/player';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Role } from "src/app/core/auth/enums/role";
 
 
 @Component({
@@ -21,14 +20,12 @@ export class PlayerItemStadisticComponent implements OnInit {
   previousValue: number;
   players: Player[] = [];
   stadisticName: string = '';
-  roleUser: string = Role.SUSCRIPTOR;
+  roleUser: string = '';
 
   constructor(private el: ElementRef, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.stadisticName = this.router.url.split('/').slice(1).join();
-    });
+    this.stadisticName = this.router.url.split('/').slice(2).join();
     if (this.stadistic.name === 'time') {
       this.previousValue = this.stadistic.value;
     }

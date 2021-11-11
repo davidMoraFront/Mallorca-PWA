@@ -1,8 +1,5 @@
 import { SpinnerService } from './../../spinner/services/spinner.service';
 import { Component, OnInit } from '@angular/core';
-import { Position } from 'src/app/shared/enums/position';
-import { StadisticType } from 'src/app/shared/enums/stadistic-type';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-layout',

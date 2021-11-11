@@ -4,8 +4,8 @@
     <button type="button" class="btn btn-primary btn-google" (click)="onGoogleLoginRegister()"><span class="icon-container"></span>{{ 'Google' | translate }}</button>
     <p>{{ 'Or register with your email' | translate}}</p>
     <form role="form" class="dir-column" [formGroup]="registerForm" (ngSubmit)="onRegister()">
-        <input type="email" placeholder="{{ 'email' | translate }}" autocomplete="on" formControlName="email" />
-        <input type="password" placeholder="{{ 'password' | translate }}" autocomplete="on" formControlName="password" />
+        <input type="email" placeholder="{{ 'Email' | translate }}" autocomplete="on" formControlName="email" />
+        <input type="password" placeholder="{{ 'Password' | translate }}" autocomplete="on" formControlName="password" />
         <span>{{ 'Minimun 6 characters' | translate }}</span>
         <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">{{ 'Send' | translate }}</button>
     </form>

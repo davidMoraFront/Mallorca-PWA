@@ -59,6 +59,12 @@
         }
       }
 
+      .player-card-details-stadistic {
+        flex-direction: row;
+        display: flex;
+        justify-content: space-around;
+      }
+
       .buttons-container {
         display: flex;
         justify-content: center;

@@ -16,6 +16,8 @@ import { Position } from 'src/app/shared/enums/position';
 export class PlayerListComponent implements OnInit, AfterViewInit {
   players: Player[];
   listTitle: string = '';
+  positionInList: number = 0;
+  id: string = '';
 
   constructor(private router: Router, 
     private activatedRoute: ActivatedRoute, 
@@ -24,8 +26,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      let list = this.router.url.split('/').slice(2).join();
-      this.listTitle = list;
+      this.listTitle = this.router.url.split('/').slice(2).join();
     });
 
     if (this.listTitle !== 'players') {

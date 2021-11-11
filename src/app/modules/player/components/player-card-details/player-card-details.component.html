@@ -2,26 +2,45 @@
 <div class="player-card-details">
     <div class="player-card-details-container dir-column">
         <div class="player-card-details-container-info dir-column">
+            <app-player-icon [image]="player?.image" [position]="player?.position"></app-player-icon>
             <div class="player-card-details-info dir-column">
                 <div class="player-card-details-info-position dir-column">
                     <app-player-position [position]="player?.position"></app-player-position>
                 </div>
             </div>
-            <app-player-icon [image]="player?.image" [position]="player?.position"></app-player-icon>
         </div>
         <form role="form" [formGroup]="playerDetailsForm" (ngSubmit)="onSubmit()" *ngIf="playerDetailsForm">
-            <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index; trackBy: getIndex">
-                <div class="player-card-details-stadistic dir-row" >
+            <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index; trackBy: getIndex; even as isEven">
+                <ng-container *ngIf="roleUser === 'admin' || 'editor'; else noEditable">
                     <div [formGroupName]="i">
                         <ng-container>
                             <app-player-item-stadistic [detail]="true"
                                 [edit]="isEditable"
-                                [indexPosition]="playerDetailsForm?.value.stadistics[i].position"
                                 [stadistic]="playerDetailsForm?.value.stadistics[i]"
                                 (valueChange)="playerDetailsForm?.value.stadistics[i].value = $event"></app-player-item-stadistic>
                         </ng-container>
                     </div>
-                </div>
+                </ng-container>
+                <ng-template #noEditable>
+                    <div class="player-card-details-stadistic dir-row" *ngIf="isEven">
+                        <div [formGroupName]="i">
+                            <ng-container>
+                                <app-player-item-stadistic [detail]="true"
+                                    [edit]="isEditable"
+                                    [stadistic]="playerDetailsForm?.value.stadistics[i]"
+                                    (valueChange)="playerDetailsForm?.value.stadistics[i].value = $event"></app-player-item-stadistic>
+                            </ng-container>
+                        </div>
+                        <div [formGroupName]="i + 1">
+                            <ng-container>
+                                <app-player-item-stadistic [detail]="true"
+                                    [edit]="isEditable"
+                                    [stadistic]="playerDetailsForm?.value.stadistics[i + 1]"
+                                    (valueChange)="playerDetailsForm?.value.stadistics[i + 1].value = $event"></app-player-item-stadistic>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-template>
             </ng-container>
         </form>
     </div>

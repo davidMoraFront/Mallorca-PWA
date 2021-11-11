@@ -5,8 +5,8 @@
     <p>{{ 'Or login with your email' | translate }}</p>
     <form role="form" class="dir-column" [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div *ngIf="isError$ | async" class="error">{{ 'Incorrect email or password' | translate}}</div>
-      <input type="email" placeholder="{{ 'email' | translate }}" autocomplete="on" formControlName="email" />
-      <input type="password" placeholder="{{ 'password' | translate }}" autocomplete="on" formControlName="password" />
+      <input type="email" placeholder="{{ 'Email' | translate }}" autocomplete="on" formControlName="email" />
+      <input type="password" placeholder="{{ 'Password' | translate }}" autocomplete="on" formControlName="password" />
       <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">{{ 'Send' | translate }}</button>
     </form>
     <a class="login-forgot-password" [routerLink]="['/forgot-password']" routerLinkActive="active">{{ 'I have forgotten the password' | translate }}</a>

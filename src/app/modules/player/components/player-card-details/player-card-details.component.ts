@@ -7,7 +7,6 @@ import { Stadistic } from "src/app/shared/interfaces/stadistic";
 import { SpinnerService } from "src/app/shared/modules/spinner/services/spinner.service";
 import { PlayerService } from "../../services/player.service";
 import { Order } from 'src/app/shared/enums/order';
-import { Role } from 'src/app/core/auth/enums/role';
 
 
 @Component({
@@ -25,7 +24,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   players: Player[] = [];
   playersSort: Player[] = [];
   positionsList: number[] = [];
-  role: Role = Role.SUSCRIPTOR;
+  roleUser: string = '';
   isEditable: boolean = false;
 
   constructor(private router: Router,
@@ -47,6 +46,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
       this.fillForm(this.player);
       this.spinnerService.hide();
     }));
+    this.roleUser = localStorage.getItem('role');
   }
 
   ngAfterViewInit(): void {

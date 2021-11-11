@@ -28,7 +28,7 @@ export class PlayerCardProfileComponent implements OnInit {
   }
 
   edit(player: Player) {
-    this.router.navigate(['../', 'profile', player.id, 'edit']);
+    this.router.navigate(['list', 'profile', player.id, 'edit']);
   }
 
   delete(player: Player) {

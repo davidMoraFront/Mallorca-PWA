@@ -8,6 +8,7 @@ import { Player } from 'src/app/shared/interfaces/player';
 })
 export class PlayerCardComponent implements OnInit {
   @Input() player: Player;
+  @Input() place: number;
 
   constructor() { }
 

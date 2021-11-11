@@ -1,7 +1,7 @@
 <p class="list-title">{{ listTitle | translate }}</p>
 <ng-container *ngIf="listTitle !== 'players'; else listPlayers">
-    <ng-container *ngFor="let player of players">
-        <app-player-card [player]="player"></app-player-card>
+    <ng-container *ngFor="let player of players; let i = index">
+        <app-player-card [player]="player" [place]="i + 1"></app-player-card>
     </ng-container>  
 </ng-container>
 <ng-template #listPlayers>

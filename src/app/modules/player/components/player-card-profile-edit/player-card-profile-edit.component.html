@@ -6,11 +6,11 @@
                 <div class="player-card-new-info dir-column">
                     <div class="player-card-new-info-position dir-column">
                         <div class="name">
-                            <label for="name" required>{{ 'name' | translate }}</label>
-                            <input class="form-control" [ngClass]="{error}" type="text" id="name" placeholder="Nombre del jugador" formControlName="name" />
+                            <label for="name" required>{{ 'Name' | translate }}</label>
+                            <input class="form-control" [ngClass]="{error}" type="text" id="name" placeholder="{{ 'Player is name' | translate }}" translate translate-attr-placeholder="text" formControlName="name" />
                         </div>
                         <div>
-                            <label for="position" required>{{ 'position' | translate }}</label>
+                            <label for="position" required>{{ 'Position' | translate }}</label>
                             <select name="position" id="position" class="form-select" [ngClass]="{error}" aria-label="Default select example" formControlName="position">
                                 <option value="" disabled>{{ 'Choose an option' | translate}}</option>
                                 <ng-container>
@@ -19,13 +19,13 @@
                             </select>
                         </div>
                         <div class="file">
-                            <label for="file">{{ 'image' | translate }}</label>
+                            <label for="file">{{ 'Image' | translate }}</label>
                             <input class="form-control" type="file" id="file" accept="image/png, image/jpeg" formControlName="image" />
                         </div>
                     </div>
                 </div>
                 <div class="buttons-container">
-                    <button type="submit" (click)="save()" class="btn btn-primary delete">{{ 'save' | translate}}</button>
+                    <button type="submit" (click)="save()" class="btn btn-primary delete">{{ 'Save' | translate}}</button>
                 </div>
             </form>
         </div>
