@@ -1,6 +1,6 @@
 {
-  "name": "Mallorca-PWA",
-  "short_name": "Mallorca-PWA",
+  "name": "Mallorca",
+  "short_name": "Mallorca",
   "theme_color": "#ed4138",
   "background_color": "#fafafa",
   "display": "standalone",

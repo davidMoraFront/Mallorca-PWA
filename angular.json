@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Mallorca-PWA": {
+    "Mallorca": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Mallorca-PWA",
+            "outputPath": "dist/Mallorca",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Mallorca-PWA:build:production"
+              "browserTarget": "Mallorca:build:production"
             },
             "development": {
-              "browserTarget": "Mallorca-PWA:build:development"
+              "browserTarget": "Mallorca:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Mallorca-PWA:build"
+            "browserTarget": "Mallorca:build"
           }
         },
         "test": {
@@ -113,5 +113,5 @@
       }
     }
   },
-  "defaultProject": "Mallorca-PWA"
+  "defaultProject": "Mallorca"
 }
