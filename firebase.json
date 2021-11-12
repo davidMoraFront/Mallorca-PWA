@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/mallorca-pwa",
+    "public": "dist/mallorca",
     "ignore": [
       "firebase.json",
       "**/.*",
