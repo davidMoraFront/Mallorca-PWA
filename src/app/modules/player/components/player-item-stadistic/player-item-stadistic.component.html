@@ -1,11 +1,11 @@
-<div class="player-item-stadistic-container dir-row" *ngIf="detail else info">
+<div class="player-item-stadistic-container dir-row" [ngClass]="roleUser === 'suscriptor' ? 'viewSuscriptor' : ''" *ngIf="detail else info">
     <ng-container *ngIf="this.stadistic.name !== 'time'; else time">
         <button class="subtract" (click)="subtraction()" *ngIf="roleUser === 'admin' || 'editor' && edit"></button>
         <div class="player-item-stadistic-option">
             <div [attr.stadistic]="stadistic.name"></div>
         </div>
         <span>{{stadistic.value}}</span>
-        <button class="sum" (click)="sum()" *ngIf="roleUser === 'admin' || 'editor' && edit"></button>
+        <button class="sum" (click)="$event.stopPropagation(); sum()" *ngIf="roleUser === 'admin' || 'editor' && edit">+</button>
     </ng-container>
     
     <ng-template #time>

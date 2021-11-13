@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ElementRef, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, ElementRef, EventEmitter, OnChanges, SimpleChanges } from "@angular/core";
 import { Stadistic } from "src/app/shared/interfaces/stadistic";
 import { Player } from 'src/app/shared/interfaces/player';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './player-item-stadistic.component.html',
   styleUrls: ['./player-item-stadistic.component.scss']
 })
-export class PlayerItemStadisticComponent implements OnInit {
+export class PlayerItemStadisticComponent implements OnInit, OnChanges {
   @Input() stadistic: Stadistic;
   @Input() indexPosition: number;
   @Output() valueChange: EventEmitter<any> = new EventEmitter();
@@ -32,12 +32,16 @@ export class PlayerItemStadisticComponent implements OnInit {
     this.roleUser = localStorage.getItem('role');
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.stadistic.firstChange === false) this.stadistic.value = changes.stadistic.previousValue.value;
+  }
+
   sum() {
     this.stadistic.value++;
   }
 
   subtraction() {
-    this.stadistic.value--;
+    if (this.stadistic.value > 0) this.stadistic.value--;
   }
 
   onBlurEvent(event: any) {

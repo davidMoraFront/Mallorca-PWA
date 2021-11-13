@@ -11,17 +11,7 @@
         </div>
         <form role="form" [formGroup]="playerDetailsForm" (ngSubmit)="onSubmit()" *ngIf="playerDetailsForm">
             <ng-container formArrayName="stadistics" *ngFor="let stadistic of stadistics; let i = index; even as isEven">
-                <ng-container *ngIf="roleUser === 'admin' || 'editor'; else noEditable">
-                    <div [formGroupName]="i">
-                        <ng-container>
-                            <app-player-item-stadistic [detail]="true"
-                                [edit]="isEditable"
-                                [stadistic]="playerDetailsForm?.value.stadistics[i]"
-                                (valueChange)="playerDetailsForm?.value.stadistics[i].value = $event"></app-player-item-stadistic>
-                        </ng-container>
-                    </div>
-                </ng-container>
-                <ng-template #noEditable>
+                <ng-container *ngIf="roleUser === 'suscriptor'; else editable">
                     <div class="player-card-details-stadistic dir-row" *ngIf="isEven">
                         <div [formGroupName]="i">
                             <ng-container>
@@ -40,6 +30,17 @@
                             </ng-container>
                         </div>
                     </div>
+                </ng-container>
+            
+                <ng-template #editable>
+                    <div [formGroupName]="i">
+                        <ng-container>
+                            <app-player-item-stadistic [detail]="true"
+                                [edit]="isEditable"
+                                [stadistic]="playerDetailsForm?.value.stadistics[i]"
+                                (valueChange)="playerDetailsForm?.value.stadistics[i].value = $event"></app-player-item-stadistic>
+                        </ng-container>
+                    </div>          
                 </ng-template>
             </ng-container>
         </form>
