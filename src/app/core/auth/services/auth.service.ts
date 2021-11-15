@@ -93,7 +93,8 @@ export class AuthService extends RoleValidator {
     const data: User = {
       uid: user.uid,
       email: user.email,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
+      role: localStorage.role ? localStorage.role : 'suscriptor'
     }
     return userRef.set(data, {merge: true});
   }
