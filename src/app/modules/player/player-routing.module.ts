@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'penalties-saved', component: PlayerListComponent },
   { path: 'yellow-cards', component: PlayerListComponent },
   { path: 'red-cards', component: PlayerListComponent },
-  { path: 'sanctions-matches', component: PlayerListComponent },
+  { path: 'goal-against', component: PlayerListComponent },
   { path: 'assistance', component: PlayerListComponent },
   { path: 'players', component: PlayerListComponent, canActivate: [AuthGuard] },
   { path: 'players/create', component: PlayerCardNewComponent, canActivate: [AuthGuard] },

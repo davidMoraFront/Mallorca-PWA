@@ -40,7 +40,7 @@ export class PlayerCardNewComponent implements OnInit, OnDestroy {
     { name: "penalties-saved", value: 0 },
     { name: "yellow-cards", value: 0 },
     { name: "red-cards", value: 0 },
-    { name: "sanctions-matches", value: 0 },
+    { name: "goal-against", value: 0 },
     { name: "assistance", value: 0 },
     { name: "time", value: 0 },
   ];

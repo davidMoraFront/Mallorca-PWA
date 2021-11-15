@@ -10,7 +10,7 @@ export enum StadisticType {
     Goals = 'goals',
     Assistance = 'assistance',
     Time = 'time',
-    SanctionsMatches = 'sanctions-matches',
+    GoalAgainst = 'goal-against',
     YellowCards = 'yellow-cards',
     RedCards = 'red-cards',
     ThrownPenalty = 'shot-penalty',
