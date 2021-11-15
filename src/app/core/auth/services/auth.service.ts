@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { User } from '../interfaces/user';
 import { mergeMap, switchMap } from 'rxjs/operators';
+import { Role } from '../enums/role';
 
 @Injectable({
   providedIn: 'root'
@@ -94,7 +95,7 @@ export class AuthService extends RoleValidator {
       uid: user.uid,
       email: user.email,
       emailVerified: user.emailVerified,
-      role: localStorage.role ? localStorage.role : 'suscriptor'
+      role: localStorage.role ? localStorage.role : Role.SUSCRIPTOR
     }
     return userRef.set(data, {merge: true});
   }
