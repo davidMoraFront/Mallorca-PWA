@@ -16,7 +16,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Changes
 
-Run `ng build`to build the project and run `firebase deploy` which will take care of uploading our files to Firebase.
+Run `ng build` to build the project and run `firebase deploy` which will take care of uploading our files to Firebase.
 
 ## Running unit tests
 
