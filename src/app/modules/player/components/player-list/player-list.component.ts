@@ -8,6 +8,8 @@ import { PlayerService } from "../../services/player.service";
 import { Position } from 'src/app/shared/enums/position';
 import { ToastService } from 'src/app/shared/modules/toast/services/toast.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/core/auth/services/auth.service';
+import { Subscription } from 'rxjs';
 
 export class CsvData {
   public id: any;
@@ -26,6 +28,8 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   listTitle: string = '';
   positionInList: number = 0;
   id: string = '';
+  roleUser: string = '';
+  sub: Subscription;
   successUpdateData: string = 'Data updated successfully';
   errorUpdateData: string = 'The data could not be updated';
   errorCsvNotValid: string = 'Please import valid .csv file';
@@ -39,9 +43,11 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
     private playerService: PlayerService, 
     private spinnerService: SpinnerService,
     private toastService: ToastService,
-    private translateService: TranslateService) { }
+    private translateService: TranslateService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.sub = this.authService.user$.subscribe(user => this.roleUser = user.role);
     this.activatedRoute.params.subscribe(params => {
       this.listTitle = this.router.url.split('/').slice(2).join();
     });
@@ -67,6 +73,10 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => this.spinnerService.show(), 0);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   compare(a: Stadistic, b: Stadistic, order: string): number {

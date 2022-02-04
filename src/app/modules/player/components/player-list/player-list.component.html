@@ -1,5 +1,5 @@
 <p class="list-title">{{ listTitle | translate }}</p>
-<div class="file-container-group">
+<div class="file-container-group" *ngIf="listTitle === 'players' && (roleUser === 'admin' || roleUser === 'editor')">
     <div class="file-container">
         <div class="file">
             <label for="file">{{ 'Import data' | translate }}</label>
