@@ -29,7 +29,7 @@
                         <div class="player-card-new-stadistic dir-row" >
                             <div [formGroupName]="i">
                                 <ng-container>
-                                    <app-player-item-stadistic [detail]="true"  
+                                    <app-player-item-stadistic [detail]="true"  [edit]="true"
                                         [indexPosition]="positionsList[i] || 0"
                                         [stadistic]="playerDetailsForm?.value.stadistics[i]"></app-player-item-stadistic>
                                 </ng-container>

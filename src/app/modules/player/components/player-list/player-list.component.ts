@@ -117,13 +117,14 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headersRow: string[]) {
     let playerArray: Player[] = [];
     for (let i = 1; i < csvRecordsArray.length; i++) {
-      let currentRecord = (csvRecordsArray[i]).split(',');
+      let currentRecord = (csvRecordsArray[i]).split(/,|;/);
       if (currentRecord.length === headersRow.length) {
         let player = <Player>{};
         player.id = currentRecord[0].trim();
         player.name = currentRecord[1].trim();
+        player.position = currentRecord[2].trim();
         player.stadistics = [];
-        for (let j = 2; j < currentRecord.length; j++) {
+        for (let j = 3; j < currentRecord.length; j++) {
           let stadistic: Stadistic = {name: '', value:0};
           stadistic.name = headersRow[j];
           stadistic.value = currentRecord[j];
