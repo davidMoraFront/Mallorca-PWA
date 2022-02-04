@@ -36,7 +36,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
 
   records: Player[] = [];
   @ViewChild('csvReader') csvReader: any;
-  headersRow: string[];
+  headersRowArray: string[];
 
   constructor(private router: Router, 
     private activatedRoute: ActivatedRoute, 
@@ -98,15 +98,19 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
       reader.onload = () => {
         let csvData = reader.result;
         let csvRecordsArray = (<string>csvData).split(/\r\n|\n/);
-        this.headersRow = this.getHeaderArray(csvRecordsArray);
-        this.records = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, this.headersRow);
+        this.headersRowArray = this.getHeaderArray(csvRecordsArray);
+        this.records = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, this.headersRowArray);
         this.records.map(el => this.playerService.updatePlayer(el.id, el));
         this.toastService.showSuccess(this.translateService.instant(this.successUpdateData));
       };
 
-      reader.onerror = function () {
+      /*reader.onerror = function () {
         console.log('error is occured while reading file!');
-      };
+      };*/
+
+      reader.onerror = () => {
+        this.toastService.showSuccess(this.translateService.instant(this.errorUpdateData));
+      }
 
     } else {
       this.toastService.showError(this.translateService.instant(this.errorCsvNotValid));
@@ -114,8 +118,9 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headersRow: string[]) {
+  getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headersRowArray: string[]) {
     let playerArray: Player[] = [];
+    let headersRow = headersRowArray[0].split(/,|;/);
     for (let i = 1; i < csvRecordsArray.length; i++) {
       let currentRecord = (csvRecordsArray[i]).split(/,|;/);
       if (currentRecord.length === headersRow.length) {
