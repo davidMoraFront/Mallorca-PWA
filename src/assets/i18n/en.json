@@ -54,6 +54,10 @@
     "Image": "Image",
     "Profile successfully updated": "Profile successfully updated",
     "You must fill in all the required fields": "You must fill in all the required fields",
+    "Import data": "Import data",
+    "Data updated successfully": "Data updated successfully",
+    "The data could not be updated": "The data could not be updated",
+    "Please import valid .csv file": "Please import valid .csv file",
     "Edit profile": "Edit profile",
     "Delete player": "Delete player",
     "Player successfully created": "Player successfully created"

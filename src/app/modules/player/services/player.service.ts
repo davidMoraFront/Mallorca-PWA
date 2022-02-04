@@ -29,7 +29,7 @@ export class PlayerService {
     return this.afs.collection<Player>('players').doc(id).valueChanges();
   }
 
-  updatePlayer(id: string, data: any) {
+  updatePlayer(id: string, data: any) {console.log(data);
     return this.afs.collection<Player>('players').doc(id).update(data);
   }
 

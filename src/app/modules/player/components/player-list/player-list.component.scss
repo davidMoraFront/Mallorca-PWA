@@ -1,7 +1,63 @@
+@import "../../../../../styles.scss";
+
 :host {
   .list-title {
     margin: 0.5rem;
     text-align: center;
     text-transform: uppercase;
+  }
+
+  .file-container-group {
+    display: flex;
+
+    .file-container {
+      display: flex;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 5px;
+      flex: 1;
+      background-image: url("../../../../../assets/card-image.png"),
+        linear-gradient(
+          135deg,
+          $background-gradient-init,
+          $background-gradient-finish
+        );
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: cover;
+      box-shadow: 0 6px 10px 0 rgb(19 26 43 / 35%);
+
+      .file {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        margin: 20px 0;
+        width: 100%;
+
+        label {
+          margin-right: 10px;
+        }
+
+        input[type="file"] {
+          width: 168px;
+          display: block;
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.5;
+          color: #212529;
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid #ced4da;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border-radius: 0.25rem;
+          transition: border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+        }
+      }
+    }
   }
 }

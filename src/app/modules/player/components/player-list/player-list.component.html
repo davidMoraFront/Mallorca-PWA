@@ -1,4 +1,12 @@
 <p class="list-title">{{ listTitle | translate }}</p>
+<div class="file-container-group">
+    <div class="file-container">
+        <div class="file">
+            <label for="file">{{ 'Import data' | translate }}</label>
+            <input type="file" #csvReader name="file" id="file" (change)="uploadListener($event)" accept=".csv" class="form-control" />
+        </div>
+    </div>
+</div>
 <ng-container *ngIf="listTitle !== 'players'; else listPlayers">
     <ng-container *ngFor="let player of players; let i = index">
         <app-player-card [player]="player" [place]="i + 1"></app-player-card>

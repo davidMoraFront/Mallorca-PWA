@@ -54,6 +54,10 @@
     "Image": "Imagen",
     "Profile successfully updated": "Perfil actualizado correctamente",
     "You must fill in all the required fields": "Debe rellenar todos los campos obligatorios",
+    "Import data": "Importar datos",
+    "Data updated successfully": "Datos actualizados correctamente",
+    "The data could not be updated": "Los datos no han podido actualizarse",
+    "Please import valid .csv file": "Por favor importe un archivo .csv válido",
     "Edit profile": "Editar perfil",
     "Delete player": "Borrar jugador",
     "Player successfully created": "Jugador creado correctamente"
