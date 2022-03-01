@@ -7,6 +7,15 @@
         </div>
     </div>
 </div>
+<!--<div class="file-container-group" *ngIf="listTitle === 'players' && (roleUser === 'admin' || 'editor')">
+    <div class="file-container">
+        <div class="file">
+            <label for="download">{{ 'Export data' | translate }}</label>
+            <button (click)="downloadCSV()" class="btn btn-primary delete">{{ 'Download' | translate }}</button>-->
+            <!--<input type="file" #csvReader name="file" id="file" (change)="uploadListener($event)" accept=".csv" class="form-control" />-->
+<!--        </div>
+    </div>
+</div>-->
 <ng-container *ngIf="listTitle !== 'players'; else listPlayers">
     <ng-container *ngFor="let player of players; let i = index">
         <app-player-card [player]="player" [place]="i + 1"></app-player-card>

@@ -10,6 +10,7 @@ import { ToastService } from 'src/app/shared/modules/toast/services/toast.servic
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
 import { Subscription } from 'rxjs';
+import { Angular2Csv } from 'angular2-csv';
 
 export class CsvData {
   public id: any;
@@ -29,7 +30,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   positionInList: number = 0;
   id: string = '';
   roleUser: string = '';
-  sub: Subscription;
+  subs: Subscription[] = [];
   successUpdateData: string = 'Data updated successfully';
   errorUpdateData: string = 'The data could not be updated';
   errorCsvNotValid: string = 'Please import valid .csv file';
@@ -37,6 +38,8 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   records: Player[] = [];
   @ViewChild('csvReader') csvReader: any;
   headersRowArray: string[];
+  //playersCsv : Player[];
+  playersCsv;
 
   constructor(private router: Router, 
     private activatedRoute: ActivatedRoute, 
@@ -47,13 +50,13 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
     private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.sub = this.authService.user$.subscribe(user => this.roleUser = user.role);
+    this.subs.push(this.authService.user$.subscribe(user => this.roleUser = user.role));
     this.activatedRoute.params.subscribe(params => {
       this.listTitle = this.router.url.split('/').slice(2).join();
     });
 
     if (this.listTitle !== 'players') {
-      this.playerService.getPlayers().subscribe(res => {
+      this.playerService.getPlayers().subscribe(res => {console.log(res);
         this.players = res.sort((a, b) => this.compare(a.stadistics.find(el => el.name === this.listTitle ? el : '')!,
           b.stadistics.find(el => el.name === this.listTitle ? el : '')!, Order.DES));
           this.spinnerService.hide();
@@ -76,7 +79,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.subs.map(sub => sub.unsubscribe());
   }
 
   compare(a: Stadistic, b: Stadistic, order: string): number {
@@ -97,7 +100,8 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
 
       reader.onload = () => {
         let csvData = reader.result;
-        let csvRecordsArray = (<string>csvData).split(/\r\n|\n/);
+        console.log(csvData);
+        let csvRecordsArray = (<string>csvData).split(/\r|\r\n|\n/);
         this.headersRowArray = this.getHeaderArray(csvRecordsArray);
         this.records = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, this.headersRowArray);
         this.records.map(el => this.playerService.updatePlayer(el.id, el));
@@ -109,7 +113,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
       };*/
 
       reader.onerror = () => {
-        this.toastService.showSuccess(this.translateService.instant(this.errorUpdateData));
+        this.toastService.showError(this.translateService.instant(this.errorUpdateData));
       }
 
     } else {
@@ -158,5 +162,40 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   fileReset() {
     this.csvReader.nativeElement.value = "";
     this.records = [];
+  }
+
+  downloadCSV() {
+    this.subs.push(this.playerService.getPlayers().subscribe(res => {
+      console.log(res);
+      this.playersCsv = Object.assign(res);
+      //this.playersCsv = res;
+      res.map((player, index) => {
+        //this.playersCsv.push(player.id,)
+        //this.playersCsv[index].stadistics = [];
+        this.playersCsv[index].id = player.id;
+        this.playersCsv[index].image = player.image;
+        this.playersCsv[index].name = player.name;
+        this.playersCsv[index].position = player.position;
+        player.stadistics.map((stad, i) => this.playersCsv[index].stadistics[i] = stad.value);
+        this.playersCsv[index].sort(Object.entries);
+      });
+      //this.playersCsv = res;
+      console.log(this.playersCsv);
+      let nameCsv: string = 'Mallorca';
+      let options = {
+        //title: 'User Details',
+        fieldSeparator: ';',
+        quoteStrings: '"',
+        //decimalseparator: '.',
+        showLabels: true,
+        //showTitle: true,
+        //useBom: true,
+        headers: ['id', 'image', 'name', 'position', 'total-matches', 'league-matches', 'friendly-matches', 'won-matches', 'tied-matches',
+                  'lost-matches', 'titular-player', 'substitute-player', 'goals', 'shot-penalty', 'goals-penalty', 'provoked-penalty',
+                  'penalties-saved', 'yellow-cards', 'red-cards', 'goal-against', 'assistance', 'time']
+      };
+
+      //new Angular2Csv(this.playersCsv, nameCsv, options);
+    }));
   }
 }

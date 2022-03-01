@@ -58,6 +58,8 @@
     "Data updated successfully": "Data updated successfully",
     "The data could not be updated": "The data could not be updated",
     "Please import valid .csv file": "Please import valid .csv file",
+    "Export data": "Export data",
+    "Download": "Download",
     "Edit profile": "Edit profile",
     "Delete player": "Delete player",
     "Player successfully created": "Player successfully created"

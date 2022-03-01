@@ -57,6 +57,13 @@
           transition: border-color 0.15s ease-in-out,
             box-shadow 0.15s ease-in-out;
         }
+
+        button {
+          width: 168px;
+          height: 38px;
+          border: 0;
+          background-color: $background-color-button;
+        }
       }
     }
   }

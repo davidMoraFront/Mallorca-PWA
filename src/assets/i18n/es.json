@@ -58,6 +58,8 @@
     "Data updated successfully": "Datos actualizados correctamente",
     "The data could not be updated": "Los datos no han podido actualizarse",
     "Please import valid .csv file": "Por favor importe un archivo .csv válido",
+    "Export data": "Exportar datos",
+    "Download": "Descargar",
     "Edit profile": "Editar perfil",
     "Delete player": "Borrar jugador",
     "Player successfully created": "Jugador creado correctamente"
