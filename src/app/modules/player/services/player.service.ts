@@ -16,24 +16,24 @@ export class PlayerService {
     return this.afs.createId();
   }
 
-  addPlayer(player: Player) {
-    return this.afs.collection<Player>('players').doc(player.id).set(player);
+  addPlayer(player: Player, type: string) {
+    return this.afs.collection<Player>(type).doc(player.id).set(player);
     // return this.afs.collection<Player>('players').add(player);
   }
 
-  getPlayers(): Observable<Player[]> {
-    return this.afs.collection<Player>('players').valueChanges();
+  getPlayers(type: string): Observable<Player[]> {
+    return this.afs.collection<Player>(type).valueChanges();
   }
 
-  getPlayer(id: string): Observable<Player | undefined> {
-    return this.afs.collection<Player>('players').doc(id).valueChanges();
+  getPlayer(id: string, type: string): Observable<Player | undefined> {
+    return this.afs.collection<Player>(type).doc(id).valueChanges();
   }
 
-  updatePlayer(id: string, data: any) {
-    return this.afs.collection<Player>('players').doc(id).update(data);
+  updatePlayer(id: string, data: any, type: string) {
+    return this.afs.collection<Player>(type).doc(id).update(data);
   }
 
-  deletePlayer(id: string) {
-    return this.afs.collection<Player>('players').doc(id).delete();
+  deletePlayer(id: string, type: string) {
+    return this.afs.collection<Player>(type).doc(id).delete();
   }
 }

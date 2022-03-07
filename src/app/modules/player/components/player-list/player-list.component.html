@@ -1,4 +1,4 @@
-<p class="list-title">{{ listTitle | translate }}</p>
+<p class="list-title"><span *ngIf="typeCompetition === 'historical'">{{ typeCompetition | titlecase | translate}} - </span><span>{{ listTitle | translate }}</span></p>
 <div class="file-container-group" *ngIf="listTitle === 'players' && (roleUser === 'admin' || 'editor')">
     <div class="file-container">
         <div class="file">

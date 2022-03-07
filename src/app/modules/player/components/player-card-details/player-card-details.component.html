@@ -1,4 +1,4 @@
-<p class="list-title">{{player?.name}}</p>
+<p class="list-title"><span *ngIf="typeCompetition === 'historical'">{{ typeCompetition | titlecase | translate}} - </span><span>{{player?.name}}</span></p>
 <div class="player-card-details">
     <div class="player-card-details-container dir-column">
         <div class="player-card-details-container-info dir-column">

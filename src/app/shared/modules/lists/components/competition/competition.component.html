@@ -1,21 +1,21 @@
-<p class="lists-title">{{ 'Lists' | translate}}</p>
+<p class="lists-title">{{ 'Competitions' | translate}}</p>
 <div class="list-container">
     <div class="list-container-options">
-        <div class="list-container-option-group" *ngIf="roleUser === 'admin' || roleUser === 'editor'">
-            <div class="list-container-option" [routerLink]="['players']" routerLinkActive="active">
+        <div class="list-container-option-group">
+            <div class="list-container-option" [routerLink]="['historical', 'list']" routerLinkActive="active" [state]="{ competition: 'historical' }">
                 <div class="list-container-option-icon">
-                    <div class="list-players"></div>
+                    <div class="historical"></div>
                 </div>
-                <span>{{ 'Players' | translate}}</span>
+                <span>{{ 'Historical' | translate}}</span>
             </div>
-            <div class="list-container-option" [routerLink]="['players', 'create']" routerLinkActive="active">
+            <div class="list-container-option" [routerLink]="['players', 'list']" routerLinkActive="active" [state]="{ competition: 'season' }">
                 <div class="list-container-option-icon">
-                    <div class="add-player"></div>
+                    <div class="season"></div>
                 </div>
-                <span>{{ 'Add player' | translate}}</span>
+                <span>{{ 'Season' | translate}}</span>
             </div>
         </div>
-        <ng-container *ngFor="let nameList of nameLists; let i = index; even as isEven">
+        <!--<ng-container *ngFor="let nameList of nameLists; let i = index; even as isEven">
             <div class="list-container-option-group" *ngIf="isEven">
                 <div class="list-container-option" [routerLink]="[nameLists[i]]" routerLinkActive="active">
                     <div class="list-container-option-icon">
@@ -30,6 +30,6 @@
                     <span>{{nameLists[i + 1] | translate}}</span>
                 </div>
             </div>
-        </ng-container>
+        </ng-container>-->
     </div>
 </div>

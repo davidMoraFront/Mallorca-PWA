@@ -10,6 +10,7 @@ import { ToastService } from 'src/app/shared/modules/toast/services/toast.servic
 import { PlayerService } from '../../services/player.service';
 import { Position } from 'src/app/shared/enums/position';
 import { TranslateService } from '@ngx-translate/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-player-card-new',
@@ -23,7 +24,7 @@ export class PlayerCardNewComponent implements OnInit, OnDestroy {
   positionsList: number[] = [];
   positions: Position[] = [];
   errorNewPlayer: string = 'You must fill in all the required fields';
-  successNewPlayer: string = 'Profile successfully created';
+  successNewPlayer: string = 'Player successfully created';
   stadistics: Stadistic[] = [
     { name: "total-matches", value: 0 },
     { name: "league-matches", value: 0 },
@@ -36,7 +37,7 @@ export class PlayerCardNewComponent implements OnInit, OnDestroy {
     { name: "goals", value: 0 },
     { name: "shot-penalty", value: 0 },
     { name: "goals-penalty", value: 0 },
-    { name: "provoked-penalty", value: 0 },
+    { name: "penalties-against", value: 0 },
     { name: "penalties-saved", value: 0 },
     { name: "yellow-cards", value: 0 },
     { name: "red-cards", value: 0 },
@@ -45,6 +46,7 @@ export class PlayerCardNewComponent implements OnInit, OnDestroy {
     { name: "time", value: 0 },
   ];
   error: boolean = false;
+  typeCompetition: string;
 
   constructor(private playerService: PlayerService,
     private fb: FormBuilder,
@@ -52,11 +54,13 @@ export class PlayerCardNewComponent implements OnInit, OnDestroy {
     private toastService: ToastService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private translateService: TranslateService) { }
+    private translateService: TranslateService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.spinnerService.show()
     this.sub = this.activatedRoute.params.subscribe(params => {
+      this.typeCompetition = this.router.url.split('/')[2];
       this.positions = Object.keys(Position).map(key => Position[key]);
       this.reset();
       this.spinnerService.hide();
@@ -65,7 +69,6 @@ export class PlayerCardNewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
-    
   }
 
   reset() {
@@ -81,8 +84,9 @@ export class PlayerCardNewComponent implements OnInit, OnDestroy {
   save() {
     if (this.playerDetailsForm.value.name !== '' && this.playerDetailsForm.value.position !== '') {
       this.playerDetailsForm.value.id = this.playerService.createId();
-      this.playerService.addPlayer(this.playerDetailsForm.value);
-      this.router.navigate(['players']);
+      this.playerService.addPlayer(this.playerDetailsForm.value, this.typeCompetition);
+      //this.router.navigate(['../']);
+      this.location.back();
       this.toastService.showSuccess(this.translateService.instant(this.successNewPlayer));
     } else {
       this.error = true;

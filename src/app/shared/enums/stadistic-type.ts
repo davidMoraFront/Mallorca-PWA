@@ -15,6 +15,6 @@ export enum StadisticType {
     RedCards = 'red-cards',
     ThrownPenalty = 'shot-penalty',
     GoalsPenalty = 'goals-penalty',
-    ProvokedPenalty = 'provoked-penalty',
+    ProvokedPenalty = 'penalties-against',
     PenaltiesSaved = 'penalties-saved'
 }

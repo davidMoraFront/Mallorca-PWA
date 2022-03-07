@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
 import { Subscription } from 'rxjs';
 import { Angular2Csv } from 'angular2-csv';
+import { map } from 'rxjs/operators';
 
 export class CsvData {
   public id: any;
@@ -40,6 +41,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   headersRowArray: string[];
   //playersCsv : Player[];
   playersCsv;
+  typeCompetition: string;
 
   constructor(private router: Router, 
     private activatedRoute: ActivatedRoute, 
@@ -52,17 +54,18 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.subs.push(this.authService.user$.subscribe(user => this.roleUser = user.role));
     this.activatedRoute.params.subscribe(params => {
-      this.listTitle = this.router.url.split('/').slice(2).join();
+      this.listTitle = this.router.url.split('/').slice(4).join();
+      this.typeCompetition = this.router.url.split('/')[2];
     });
-
+    
     if (this.listTitle !== 'players') {
-      this.playerService.getPlayers().subscribe(res => {console.log(res);
+      this.playerService.getPlayers(this.typeCompetition).subscribe(res => {
         this.players = res.sort((a, b) => this.compare(a.stadistics.find(el => el.name === this.listTitle ? el : '')!,
           b.stadistics.find(el => el.name === this.listTitle ? el : '')!, Order.DES));
           this.spinnerService.hide();
       });
     } else {
-      this.playerService.getPlayers().subscribe(res => {
+      this.playerService.getPlayers(this.typeCompetition).subscribe(res => {
         const orderEnum = [];
         for (let key in Position) {
           orderEnum.push(key);
@@ -104,7 +107,7 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
         let csvRecordsArray = (<string>csvData).split(/\r|\r\n|\n/);
         this.headersRowArray = this.getHeaderArray(csvRecordsArray);
         this.records = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, this.headersRowArray);
-        this.records.map(el => this.playerService.updatePlayer(el.id, el));
+        this.records.map(el => this.playerService.updatePlayer(el.id, el, this.typeCompetition));
         this.toastService.showSuccess(this.translateService.instant(this.successUpdateData));
       };
 
@@ -164,8 +167,8 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
     this.records = [];
   }
 
-  downloadCSV() {
-    this.subs.push(this.playerService.getPlayers().subscribe(res => {
+  /*downloadCSV() {
+    this.subs.push(this.playerService.getPlayers(this.typeCompetition).subscribe(res => {
       console.log(res);
       this.playersCsv = Object.assign(res);
       //this.playersCsv = res;
@@ -191,11 +194,11 @@ export class PlayerListComponent implements OnInit, AfterViewInit {
         //showTitle: true,
         //useBom: true,
         headers: ['id', 'image', 'name', 'position', 'total-matches', 'league-matches', 'friendly-matches', 'won-matches', 'tied-matches',
-                  'lost-matches', 'titular-player', 'substitute-player', 'goals', 'shot-penalty', 'goals-penalty', 'provoked-penalty',
+                  'lost-matches', 'titular-player', 'substitute-player', 'goals', 'shot-penalty', 'goals-penalty', 'penalties-against',
                   'penalties-saved', 'yellow-cards', 'red-cards', 'goal-against', 'assistance', 'time']
       };
 
       //new Angular2Csv(this.playersCsv, nameCsv, options);
     }));
-  }
+  }*/
 }

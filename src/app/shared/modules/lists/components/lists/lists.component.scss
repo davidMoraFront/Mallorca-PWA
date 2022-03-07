@@ -1,4 +1,4 @@
-@import "../../../../../styles.scss";
+@import "../../../../../../styles.scss";
 
 :host {
   display: flex;
@@ -20,7 +20,7 @@
       padding: 5px;
       border-radius: 5px;
       margin: 5px;
-      background-image: url("../../../../../assets/card-image.png"),
+      background-image: url("../../../../../../assets/card-image.png"),
         linear-gradient(
           135deg,
           $background-gradient-init,
@@ -46,6 +46,7 @@
           padding: 15px;
           height: 140px;
           justify-content: center;
+          cursor: pointer;
 
           .list-container-option-icon {
             height: 50px;
@@ -62,83 +63,83 @@
               background-repeat: no-repeat;
 
               &.total-matches {
-                background-image: url("../../../../../assets/total-matches.png");
+                background-image: url("../../../../../../assets/total-matches.png");
               }
 
               &.league-matches {
-                background-image: url("../../../../../assets/league-matches.png");
+                background-image: url("../../../../../../assets/league-matches.png");
               }
 
               &.friendly-matches {
-                background-image: url("../../../../../assets/friendly-matches.png");
+                background-image: url("../../../../../../assets/friendly-matches.png");
               }
 
               &.won-matches {
-                background-image: url("../../../../../assets/win.png");
+                background-image: url("../../../../../../assets/win.png");
               }
 
               &.tied-matches {
-                background-image: url("../../../../../assets/equals.png");
+                background-image: url("../../../../../../assets/equals.png");
               }
 
               &.lost-matches {
-                background-image: url("../../../../../assets/loss.png");
+                background-image: url("../../../../../../assets/loss.png");
               }
 
               &.titular-player {
-                background-image: url("../../../../../assets/titular.png");
+                background-image: url("../../../../../../assets/titular.png");
               }
 
               &.substitute-player {
-                background-image: url("../../../../../assets/substitute.png");
+                background-image: url("../../../../../../assets/substitute.png");
               }
 
               &.time {
-                background-image: url("../../../../../assets/time.png");
+                background-image: url("../../../../../../assets/time.png");
               }
 
               &.goals {
-                background-image: url("../../../../../assets/goal.png");
+                background-image: url("../../../../../../assets/goal.png");
               }
 
               &.shot-penalty {
-                background-image: url("../../../../../assets/shot-penalty.png");
+                background-image: url("../../../../../../assets/shot-penalty.png");
               }
 
               &.goals-penalty {
-                background-image: url("../../../../../assets/goal-penalty.png");
+                background-image: url("../../../../../../assets/goal-penalty.png");
               }
 
-              &.provoked-penalty {
-                background-image: url("../../../../../assets/penalty.png");
+              &.penalties-against {
+                background-image: url("../../../../../../assets/penalty.png");
               }
 
               &.penalties-saved {
-                background-image: url("../../../../../assets/penalty-saved.png");
+                background-image: url("../../../../../../assets/penalty-saved.png");
               }
 
               &.yellow-cards {
-                background-image: url("../../../../../assets/yellow-card.png");
+                background-image: url("../../../../../../assets/yellow-card.png");
               }
 
               &.red-cards {
-                background-image: url("../../../../../assets/red-card.png");
+                background-image: url("../../../../../../assets/red-card.png");
               }
 
               &.goal-against {
-                background-image: url("../../../../../assets/goal-against.png");
+                background-image: url("../../../../../../assets/goal-against.png");
               }
 
               &.assistance {
-                background-image: url("../../../../../assets/assistance.png");
+                background-image: url("../../../../../../assets/assistance.png");
               }
 
               &.list-players {
-                background-image: url("../../../../../assets/players.png");
+                background-image: url("../../../../../../assets/players.png");
               }
 
               &.add-player {
-                background-image: url("../../../../../assets/add-player.png");
+                background-image: url("../../../../../../assets/add-player.png");
               }
             }
           }

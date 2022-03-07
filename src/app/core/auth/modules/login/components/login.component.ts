@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     try {
       const user = await this.authService.googleLoginRegister();
       this.authService.checkUserIsVerified(user);
-      this.router.navigate(['/list']);
+      this.router.navigate(['/competition']);
     } catch(error) {
       console.log(error);
     }

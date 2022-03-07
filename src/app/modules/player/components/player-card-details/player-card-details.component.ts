@@ -25,6 +25,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   playersSort: Player[] = [];
   roleUser: string = '';
   isEditable: boolean = false;
+  typeCompetition: string;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -35,10 +36,11 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   ngOnInit(): void {
     this.subs.push(this.activatedRoute.params.subscribe(params => {
       this.isEditable = this.router.url.split('/').slice(2, 3).join() === 'profile';
+      this.typeCompetition = this.router.url.split('/')[2];
     }));
     this.subs.push(this.activatedRoute.params.subscribe(params => this.id = params.id));
-    this.subs.push(this.playerService.getPlayers().subscribe(res => this.players = res));
-    this.subs.push(this.playerService.getPlayer(this.id).subscribe(res => {
+    this.subs.push(this.playerService.getPlayers(this.typeCompetition).subscribe(res => this.players = res));
+    this.subs.push(this.playerService.getPlayer(this.id, this.typeCompetition).subscribe(res => {
       this.player = res;
       this.dataStadistics = res.stadistics;
       this.reset();
@@ -96,7 +98,7 @@ export class PlayerCardDetailsComponent implements OnInit, AfterViewInit, OnDest
   }
 
   onSubmit() {
-    this.playerService.updatePlayer(this.id, this.playerDetailsForm.value);
+    this.playerService.updatePlayer(this.id, this.playerDetailsForm.value, this.typeCompetition);
   }
 
 }
