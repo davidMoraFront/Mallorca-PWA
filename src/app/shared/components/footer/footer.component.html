@@ -1,16 +1,19 @@
 <div class="footer">
-    <div class="footer-option" [routerLink]="[getCompetition(), 'list', 'total-matches']" routerLinkActive="active-link">
+    <!--<div class="footer-option" [routerLink]="[getCompetition(), 'list', 'total-matches']" routerLinkActive="active-link">
         <div class="total-matches-list"></div>
+    </div>-->
+    <div class="footer-option" [routerLink]="['../', 'competition']" routerLinkActive="active-link">
+        <div class="competitions"></div>
     </div>
-    <div class="footer-option" [routerLink]="[getCompetition(), 'list', 'time']" routerLinkActive="active-link"> 
+    <!--<div class="footer-option" [routerLink]="[getCompetition(), 'list', 'time']" routerLinkActive="active-link"> 
         <div class="time-list"></div>
-    </div>
+    </div>-->
     <div class="footer-option" [routerLink]="[getCompetition(), 'list']" routerLinkActive="active">
         <div class="lists"></div>
     </div>
-    <div class="footer-option" [routerLink]="[getCompetition(), 'list', 'goals']" routerLinkActive="active">
+    <!--<div class="footer-option" [routerLink]="[getCompetition(), 'list', 'goals']" routerLinkActive="active">
         <div class="goals-list"></div>
-    </div>
+    </div>-->
     <div class="footer-option" data-bs-toggle="modal" data-bs-target="#modalHelp">
         <div class="help"></div>
     </div>

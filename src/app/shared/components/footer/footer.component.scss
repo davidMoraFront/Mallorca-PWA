@@ -31,25 +31,26 @@
         background-repeat: no-repeat;
       }
 
-      .total-matches-list {
+      /*.total-matches-list {
         background-image: url("../../../../assets/total-matches.png");
       }
 
       .time-list {
         background-image: url("../../../../assets/time.png");
+      }*/
+
+      .competitions {
+        background-image: url("../../../../assets/competitions.png");
+        border-radius: 50%;
       }
 
       .lists {
         background-image: url("../../../../assets/lists.png");
       }
 
-      .goals-list {
+      /*.goals-list {
         background-image: url("../../../../assets/goal.png");
-      }
-
-      // .yellow-cards-list {
-      //   background-image: url("../../../../assets/yellow-card.png");
-      // }
+      }*/
 
       .help {
         background-image: url("../../../../assets/help.png");
@@ -64,7 +65,8 @@
       background-color: $background-color-primary;
       padding: 5px;
       border-radius: 5px;
-      margin: 5px;
+      margin: 1rem;
+      max-height: 86%;
 
       .modal-header {
         border-bottom: none;
