@@ -25,7 +25,7 @@ export class PlayerItemStadisticComponent implements OnInit, OnChanges {
   constructor(private el: ElementRef, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.stadisticName = this.router.url.split('/').slice(2).join();
+    this.stadisticName = this.router.url.split('/').slice(4).join();
     if (this.stadistic.name === 'time') {
       this.previousValue = this.stadistic.value;
     }
